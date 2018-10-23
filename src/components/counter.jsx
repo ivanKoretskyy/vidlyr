@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    counter: 0,
-    tags: ["pc", "smartphones", "sounds"]
+    counter: 0
   };
   render() {
     let classes = "badge m-2 badge-";
@@ -12,15 +11,19 @@ class Counter extends Component {
     return (
       <div>
         <span className={classes}>{this.increment()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {this.state.tags.map(tag => (
-            <li>{tag}</li>
-          ))}
-        </ul>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
+
+  handleIncrement = () => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
   increment() {
     return this.state.counter;
   }
